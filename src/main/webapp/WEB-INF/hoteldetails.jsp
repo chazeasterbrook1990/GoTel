@@ -26,8 +26,7 @@
 			</p>
 			<p>
 				Address:
-				<c:out
-					value="${details.get('address').toString().replace('\"', '')}"></c:out>
+				<c:out value="${details.get('address').toString().replace('\"', '')}"></c:out>
 	</p>
 	<p>
 		City:
