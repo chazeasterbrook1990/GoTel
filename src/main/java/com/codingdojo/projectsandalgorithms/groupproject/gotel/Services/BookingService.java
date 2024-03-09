@@ -11,34 +11,33 @@ import com.codingdojo.projectsandalgorithms.groupproject.gotel.Repositories.Book
 @Service
 
 public class BookingService {
-	
+
 	@Autowired
 	private BookingRepository repoBooking;
-	
-	
-		//Get All
-		public List<Booking> all() {
-			return repoBooking.findAll();	}
-		
-		//Find One By ID
-			public Booking findOne(Long id) {
-				return repoBooking.findById(id).orElse(null);
-			}
-			
-		//Create
-		public Booking create(Booking booking) {
-			return repoBooking.save(booking);
-		}
-		
-		//Update
-		public Booking edit (Booking booking) {
-			return repoBooking.save(booking);
-		}
-		
-		//Delete
-		public void destroy(Long id) {
-			repoBooking.deleteById(id);
-		}
 
+	// Get All
+	public List<Booking> all() {
+		return repoBooking.findAll();
+	}
+
+	// Find One By ID
+	public Booking findOne(Long id) {
+		return repoBooking.findById(id).orElse(null);
+	}
+
+	// Create
+	public Booking create(Booking booking) {
+		return repoBooking.save(booking);
+	}
+
+	// Update
+	public Booking edit(Booking booking) {
+		return repoBooking.save(booking);
+	}
+
+	// Delete
+	public void destroy(Long id) {
+		repoBooking.deleteById(id);
+	}
 
 }

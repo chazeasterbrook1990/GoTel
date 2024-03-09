@@ -9,10 +9,9 @@ import com.codingdojo.projectsandalgorithms.groupproject.gotel.Models.User;
 
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
- 
- Optional<User> findByEmail(String email);
- 
- Optional<User> findById(Long id);
- 
-}
 
+	Optional<User> findByEmail(String email);
+
+	Optional<User> findById(Long id);
+
+}

@@ -18,63 +18,57 @@ import jakarta.validation.Valid;
 
 @Controller
 public class AuthController {
-	
+
 	@Autowired
 	public UserService userService;
 	@Autowired
 	public UserRepository userRepo;
-	 
-	 // get requests
-	 	//home login & registration
-	 @GetMapping("/")
-	 public String index(Model model, HttpSession session) {
-		 if (session.getAttribute("loggedInUser") != null){
-	    	 return "redirect:/gotel/home";
-		 } 
-		 model.addAttribute("newLogin", new LoginUser());
-		 model.addAttribute("newUser", new User());
-	     return "index.jsp";
-	 }
-	 
-	 	//logout
-	 @GetMapping("/logout")
-	 public String logout(HttpSession session) {
-		 session.invalidate();
-		 return "redirect:/";
-	 }
-	 
-	 // post requests
-	 	// registration
-	 @PostMapping("/register")
-	 public String register(@Valid @ModelAttribute("newUser") User newUser, 
-	         BindingResult result, Model model, HttpSession session) {
-	     
-	     if(result.hasErrors() || userService.register(newUser, result)!=newUser) {
-	         model.addAttribute("newLogin", new LoginUser());
-	         return "index.jsp";
-	     } else if (session.getAttribute("loggedInUser") != null){
-	    	 return "redirect:/gotel/home";
-	     } else {
-	    	 userService.register(newUser, result);
-	    	 session.setAttribute("loggedInUser", newUser.getId());
-	     }
-	     return "redirect:/gotel/home";
-	 }
-	 
-	 	//login
-	 @PostMapping("/login")
-	 public String login(@Valid @ModelAttribute("newLogin") LoginUser newLogin, 
-	         BindingResult result, Model model, HttpSession session) {
-	  
-		 User user = userService.login(newLogin, result);
-	 
-	     if(result.hasErrors()) {
-	         model.addAttribute("newUser", new User());
-	         return "index.jsp";
-	     }
-	     userService.login(newLogin, result);
-	     session.setAttribute("loggedInUser", user.getId());
-	     return "redirect:/gotel/home";
-	 }
-	 
+
+	@GetMapping("/")
+	public String index(Model model, HttpSession session) {
+		if (session.getAttribute("loggedInUser") != null) {
+			return "redirect:/gotel/home";
+		}
+		model.addAttribute("newLogin", new LoginUser());
+		model.addAttribute("newUser", new User());
+		return "index.jsp";
+	}
+
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";
+	}
+
+	@PostMapping("/register")
+	public String register(@Valid @ModelAttribute("newUser") User newUser, BindingResult result, Model model,
+			HttpSession session) {
+
+		if (result.hasErrors() || userService.register(newUser, result) != newUser) {
+			model.addAttribute("newLogin", new LoginUser());
+			return "index.jsp";
+		} else if (session.getAttribute("loggedInUser") != null) {
+			return "redirect:/gotel/home";
+		} else {
+			userService.register(newUser, result);
+			session.setAttribute("loggedInUser", newUser.getId());
+		}
+		return "redirect:/gotel/home";
+	}
+
+	@PostMapping("/login")
+	public String login(@Valid @ModelAttribute("newLogin") LoginUser newLogin, BindingResult result, Model model,
+			HttpSession session) {
+
+		User user = userService.login(newLogin, result);
+
+		if (result.hasErrors()) {
+			model.addAttribute("newUser", new User());
+			return "index.jsp";
+		}
+		userService.login(newLogin, result);
+		session.setAttribute("loggedInUser", user.getId());
+		return "redirect:/gotel/home";
+	}
+
 }

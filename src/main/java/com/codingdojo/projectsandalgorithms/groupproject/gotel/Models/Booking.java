@@ -1,5 +1,6 @@
 package com.codingdojo.projectsandalgorithms.groupproject.gotel.Models;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -15,72 +16,66 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
-@Table(name="bookings")
+@Table(name = "bookings")
 
 public class Booking {
-	
+
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-	
-	@NotEmpty(message = "Please pick a state in the United States.")
-	@NotNull(message = "This field cannot be blank or without characters.")
-	private String state;
-	
-	@NotEmpty(message = "Please pick a city within the state selected.")
-	@NotNull(message = "This field cannot be blank or without characters.")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
+	@NotNull(message = "This field cannot be blank")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate checkInDate;
+
+	@NotNull(message = "This field cannot be blank")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate checkOutDate;
+
+	private String hotelId;
+
 	private String city;
-	
-	@NotEmpty(message = "Please enter a check in date.")
-	@NotNull(message = "This field cannot be blank or without characters.")
-	@DateTimeFormat(pattern="yyyy-MM-dd")
-	private Date checkInDate;
-	
-	@NotEmpty(message = "Please enter a check out date.")
-	@NotNull(message = "This field cannot be blank or without characters.")
-	@DateTimeFormat(pattern="yyyy-MM-dd")
-	private Date checkOutDate;
-	
+
+	private String hotelName;
+
 	@Column(updatable = false)
-	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date createdAt;
-	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updatedAt;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="user_id")
-    private User user;
-	
+	@JoinColumn(name = "user_id")
+	private User user;
+
 	@PrePersist
 	protected void onCreate() {
 		this.createdAt = new Date();
 	}
-	
+
 	@PreUpdate
 	protected void onUpdate() {
 		this.updatedAt = new Date();
 	}
-	
-	public Booking () {}
 
-	public Booking(Long id,
-			@NotEmpty(message = "Please pick a state in the United States.") @NotNull(message = "This field cannot be blank or without characters.") String state,
-			@NotEmpty(message = "Please pick a city within the state selected.") @NotNull(message = "This field cannot be blank or without characters.") String city,
-			@NotEmpty(message = "Please enter a check in date.") @NotNull(message = "This field cannot be blank or without characters.") Date checkInDate,
-			@NotEmpty(message = "Please enter a check out date.") @NotNull(message = "This field cannot be blank or without characters.") Date checkOutDate,
-			Date createdAt, Date updatedAt, User user) {
+	public Booking() {
+	}
+
+	public Booking(Long id, String hotelId, @NotNull(message = "Please enter a check in date.") LocalDate checkInDate,
+			@NotNull(message = "Please enter a check in date.") LocalDate checkOutDate, Date createdAt, Date updatedAt,
+			User user, String city, String hotelName) {
 		super();
 		this.id = id;
-		this.state = state;
-		this.city = city;
+		this.hotelId = hotelId;
 		this.checkInDate = checkInDate;
 		this.checkOutDate = checkOutDate;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
+		this.hotelName = hotelName;
+		this.city = city;
 		this.user = user;
 	}
 
@@ -92,35 +87,19 @@ public class Booking {
 		this.id = id;
 	}
 
-	public String getState() {
-		return state;
-	}
-
-	public void setState(String state) {
-		this.state = state;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public Date getCheckInDate() {
+	public LocalDate getCheckInDate() {
 		return checkInDate;
 	}
 
-	public void setCheckInDate(Date checkInDate) {
+	public void setCheckInDate(LocalDate checkInDate) {
 		this.checkInDate = checkInDate;
 	}
 
-	public Date getCheckOutDate() {
+	public LocalDate getCheckOutDate() {
 		return checkOutDate;
 	}
 
-	public void setCheckOutDate(Date checkOutDate) {
+	public void setCheckOutDate(LocalDate checkOutDate) {
 		this.checkOutDate = checkOutDate;
 	}
 
@@ -147,6 +126,29 @@ public class Booking {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
-	
+
+	public String getHotelId() {
+		return hotelId;
+	}
+
+	public void setHotelId(String hotelId) {
+		this.hotelId = hotelId;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getHotelName() {
+		return hotelName;
+	}
+
+	public void setHotelName(String hotelName) {
+		this.hotelName = hotelName;
+	}
+
 }
