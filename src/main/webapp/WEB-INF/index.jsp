@@ -12,55 +12,81 @@
 <link rel="stylesheet" href="/style.css" />
 <title>Login and Registration</title>
 </head>
-<body>
-	<div class="container custom-container text-center">
-		<p class="fw-bold fs-5 mt-4">User Login</p>
-		<form:form action="/login" method="POST" modelAttribute="newLogin">
-			<div class="form-group">
-				<form:label path="email"></form:label>
-				<form:errors path="email" class="errors"></form:errors>
-				<form:input path="email" class="form-control" placeholder="Email"></form:input>
+<body class = "page">
+	<section>
+		<div class="header">
+			<img style="width: 300px" src="../images/logogotel.png">
+		</div>
+	</section>
+	<section>
+		<div class="nav">
+			<ul class="main-nav">
+				<li><a href="#">About</a></li>
+				<li><a href="#">Feedback</a></li>
+			</ul>
+		</div>
+	</section>
+	<section>
+		<div class="body-main">
+			<div>
+				<img src="<c:url value='/images/sunsetbeach.png' />" alt="background image" class="background-image">
+				<h4>Experience America's Leading Hotel Resource!</h4>
+			</div>	
+			<div class="login">
+				<form:form action="/login" method="POST" modelAttribute="newLogin">
+					<div>
+						<p class="login-text1">User Login</p>
+						<form:label path="email"></form:label>
+						<form:errors path="email" class="errors"></form:errors>
+						<form:input class = "input1" path="email" placeholder="Email"></form:input>
+					</div>
+					<div>
+						<form:label path="password"></form:label>
+						<form:errors path="password" class="errors"></form:errors>
+						<form:input class = "input1" path="password" type="password" 
+							placeholder="Password"></form:input>
+					</div>
+					<input type="submit" value="Submit" class="custom-btn"/>
+				</form:form>
 			</div>
-			<div class="form-group">
-				<form:label path="password"></form:label>
-				<form:errors path="password" class="errors"></form:errors>
-				<form:input path="password" type="password" class="form-control"
-					placeholder="Password"></form:input>
+			
+			<div class="register">
+				<form:form action="/register" method="POST" modelAttribute="newUser">
+					<div>
+						<p class="login-text1">Register Today</p>
+						<form:label  path="userName"></form:label>
+						<form:errors path="userName" class="errors"></form:errors>
+						<form:input class = "input1" path="userName" placeholder="User Name"></form:input>
+					</div>
+					<div>
+						<form:label  path="email"></form:label>
+						<form:errors path="email" class="errors"></form:errors>
+						<form:input class = "input1" path="email" placeholder="Email"></form:input>
+					</div>
+					<div>
+						<form:label  path="password"></form:label>
+						<form:errors path="password" class="errors"></form:errors>
+						<form:input class = "input1" path="password" type="password" 
+							placeholder="Password"></form:input>
+					</div>
+					<div>
+						<form:label  path="confirm"></form:label>
+						<form:errors path="confirm" class="errors"></form:errors>
+						<form:input class = "input1" path="confirm" type="password" 
+							placeholder="Confirm Password"></form:input>
+					</div>
+					<input type="submit" value="Submit" class="custom-btn">
+				</form:form>
 			</div>
-			<input type="submit" value="Submit"
-				class="btn btn-primary fw-bold fs-5 mt-4">
-		</form:form>
-	</div>
-	<div class="text-center">
-		<h2 class="fw-bold fs-5 mt-4">Register Today</h2>
-	</div>
-	<div class="container custom-container text-center">
-		<form:form action="/register" method="POST" modelAttribute="newUser">
-			<div class="form-group">
-				<form:label path="userName"></form:label>
-				<form:errors path="userName" class="errors"></form:errors>
-				<form:input path="userName" class="form-control"
-					placeholder="User Name"></form:input>
-			</div>
-			<div class="form-group">
-				<form:label path="email"></form:label>
-				<form:errors path="email" class="errors"></form:errors>
-				<form:input path="email" class="form-control" placeholder="Email"></form:input>
-			</div>
-			<div class="form-group">
-				<form:label path="password"></form:label>
-				<form:errors path="password" class="errors"></form:errors>
-				<form:input path="password" type="password" class="form-control"
-					placeholder="Password"></form:input>
-			</div>
-			<div class="form-group">
-				<form:label path="confirm"></form:label>
-				<form:errors path="confirm" class="errors"></form:errors>
-				<form:input path="confirm" type="password" class="form-control"
-					placeholder="Confirm Password"></form:input>
-			</div>
-			<input type="submit" value="Submit" class="btn btn-primary">
-		</form:form>
-	</div>
+		</div>
+	</section>
+	<section>
+		<div class="footer">
+			<p class="footer-text">* Some hotels require you to cancel more than 24 hours before check-in. Details on site.
+**OneKeyCash is not redeemable for cash and can only be used on Hotels.com, Expedia and Vrbo.
+© 2024 GoTel.com is an Expedia Group company. All rights reserved.
+GoTel.com and the GoTel.com logo are trademarks or registered trademarks of GoTel.com, LP in the United States. All other trademarks are the property of their respective owners.</p>
+		</div>
+	</section>
 </body>
 </html>
