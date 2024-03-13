@@ -15,6 +15,10 @@
 </head>
 <body>
 	<div class="text-right">
+		<button type="button" name="back" onclick="history.back()" class="btn btn-primary fw-bold fs-5 mt-4 mx-2">Return to Search</button>
+		
+	</div>
+	<div class="text-right">
 		<a href="/gotel/home" class="btn btn-primary fw-bold fs-5 mt-4 mx-2">Start a New Search</a>
 		
 	</div>
@@ -64,7 +68,7 @@
 	</c:forEach>
 	<div class="">
 		<form:form
-			action="/gotel/create-booking/${details.get('hotel_name').toString().replace('\"', '')}/${details.get('hotel_id').toString().replace('\"', '')}/${details.get('city').toString().replace('\"', '')}"
+			action="/gotel/create-booking/${details.get('hotel_name').toString().replace('\"', '').replace('/', '')}/${details.get('hotel_id').toString().replace('\"', '')}/${details.get('city').toString().replace('\"', '')}"
 			method="POST" modelAttribute="newBooking">
 			<form:errors path="checkInDate" class="errors"></form:errors>
 			<form:input path="checkInDate" type="text"
