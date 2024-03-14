@@ -26,8 +26,7 @@
 	<div>
 		<p class="intro-welcome">
 			Welcome,
-			<c:out value="${userName}"></c:out>
-			!
+			<c:out value="${userName}"></c:out>!
 		</p>
 	</div>
 	<div class="container1 custom-container text-center">

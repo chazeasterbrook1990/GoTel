@@ -11,7 +11,7 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="/style.css" />
 <meta charset="UTF-8">
-<title>GoTel Home</title>
+<title>${details.get('hotel_name').toString().replace('\"', '')}</title>
 </head>
 <body class = "page">
 	<div class="header">
@@ -57,17 +57,19 @@
 				<c:out
 					value="${details.get('available_rooms').toString().replace('\"', '')}"></c:out>
 	</p>
-	<p>Facilities:</p> <c:forEach var="facility"
+	<p class="font-weight-bold">Facilities:</p> <c:forEach var="facility"
 		items="${details.get('facilities_block').get('facilities').iterator()}">
 		<li><c:out
 				value="${facility.get('name').toString().replace('\"', '')}"></c:out>
 			</li>
 			</c:forEach>
-			<p>Important Information for Your Stay: </p>
+			<br>
+			<p class="font-weight-bold">Important Information for Your Stay: </p>
 			<c:forEach var="info" items="${importantInfo.iterator()}">
    		<li><c:out value="${info.get('phrase').toString().replace('\"', '')}"></c:out>
 		</li>
 	</c:forEach>
+	<br>
 	<div class="">
 		<form:form
 			action="/gotel/create-booking/${details.get('hotel_name').toString().replace('\"', '').replace('/', '')}/${details.get('hotel_id').toString().replace('\"', '')}/${details.get('city').toString().replace('\"', '')}"

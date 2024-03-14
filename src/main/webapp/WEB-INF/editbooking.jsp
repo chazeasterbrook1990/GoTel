@@ -11,7 +11,7 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="/style.css" />
 <meta charset="UTF-8">
-<title>GoTel Home</title>
+<title>Edit Your Booking</title>
 </head>
 <body class = "page">
 	<div class="header">
@@ -23,12 +23,7 @@
 			<li><a href="/logout">Logout</a></li>
 		</ul>
 	</div>
-	<h1>Edit Your Booking</h1>
-	<div class="text-right">
-		<a href="/gotel/home" class="btn btn-primary fw-bold fs-5 mt-4 mx-2">Return
-			Home</a>
-
-	</div>
+	<h1 class="text-center">Edit Your Booking</h1>
 	<div class="d-flex flex-column container custom-container">
 		<h1>
 			<c:out
@@ -59,19 +54,21 @@
 			value="${details.get('distance_to_cc').toString().replace('\"', '')}"></c:out>
 					KM
 				</p>
-				<p>Facilities:</p>
+				<p class="font-weight-bold">Facilities:</p>
 				<c:forEach var="facility"
 					items="${details.get('facilities_block').get('facilities').iterator()}">
 					<li><c:out
 							value="${facility.get('name').toString().replace('\"', '')}"></c:out>
 			</li>
 			</c:forEach>
-			<p>Important Information for Your Stay: </p>
+			<br>
+			<p class="font-weight-bold">Important Information for Your Stay: </p>
 			<c:forEach var="info" items="${importantInfo.iterator()}">
    		<li><c:out value="${info.get('phrase').toString().replace('\"', '')}"></c:out>
 					</li>
 				</c:forEach>
-				<div class="">
+				<br>
+				<div>
 					<form:form action="/gotel/booking/${booking.id}/update"
 						method="POST" modelAttribute="booking">
 						<form:errors path="checkInDate" class="errors"></form:errors>

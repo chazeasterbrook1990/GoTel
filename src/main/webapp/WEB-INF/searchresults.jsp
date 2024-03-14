@@ -11,7 +11,7 @@
 			href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 		<link rel="stylesheet" href="/style.css" />
 		<meta charset="UTF-8">
-		<title>GoTel Home</title>
+		<title>Search Results</title>
 	</head>
 	<body class = "page">
 		<div class="header">
@@ -24,7 +24,8 @@
 			</ul>
 		</div>
 		<div>
-			<h1>Search Results</h1>
+			<h1 class="text-center">Search Results</h1>
+			<p class="text-center font-italic"><c:out value="${hotels.size()}"/> hotels available based on your search</p>
 			<div class="search-table">
 				<table class="table table-striped table-bordered">
 					<thead class="thead-dark">
