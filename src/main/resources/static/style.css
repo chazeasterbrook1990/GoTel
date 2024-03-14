@@ -33,6 +33,17 @@
 	
 }
 
+.back-btn{
+	font-size: 10pt;
+	font-weight: bold;
+	color: white;
+	background-color: black;
+	text-align: center;
+	padding: 0 auto;
+	margin-top: 9px;
+	border: none;
+}
+
 .background-image{
 	display: block;
 	margin-left: auto;
@@ -89,10 +100,26 @@
 }
 
 .searchbtn{
-	background-color: #db8e00;
+	background-color: #ff8000;
+	border: 2px solid #cc6600;
 	box-shadow: 3px 3px grey;
 	width: 10%;
+	color: white;
 	font-weight: bold;
+}
+
+.bookbtn{
+	background-color: #ff8000;
+	border: 2px solid #cc6600;
+	box-shadow: 3px 3px grey;
+	width: 20%;
+	color: white;
+	font-weight: bold;
+}
+
+.book{
+	margin-top: 10px;
+	
 }
 
 .bookings-table, .search-table{

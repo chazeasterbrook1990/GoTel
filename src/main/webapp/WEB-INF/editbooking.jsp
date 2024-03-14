@@ -2,17 +2,27 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="/style.css" />
-<title>Edit Your Booking</title>
+<meta charset="UTF-8">
+<title>GoTel Home</title>
 </head>
-<body>
+<body class = "page">
+	<div class="header">
+		<img style="width: 300px" src="../images/logogotel.png">
+	</div>
+	<div>
+		<ul class="main-nav">
+			<li><a href="/gotel/home">Home</a></li>
+			<li><a href="/logout">Logout</a></li>
+		</ul>
+	</div>
 	<h1>Edit Your Booking</h1>
 	<div class="text-right">
 		<a href="/gotel/home" class="btn btn-primary fw-bold fs-5 mt-4 mx-2">Return
@@ -65,13 +75,13 @@
 					<form:form action="/gotel/booking/${booking.id}/update"
 						method="POST" modelAttribute="booking">
 						<form:errors path="checkInDate" class="errors"></form:errors>
-						<form:input path="checkInDate" type="text"
+						<form:input class="checkin" path="checkInDate" type="text"
 							placeholder="Check-In (yyyy-MM-dd)" value="${arrival}"></form:input>
 						<form:errors path="checkOutDate" class="errors"></form:errors>
-						<form:input path="checkOutDate" type="text"
+						<form:input class="checkout" path="checkOutDate" type="text"
 							placeholder="Check-Out (yyyy-MM-dd)" value="${departure}"></form:input>
 						<input type="submit" value="Edit Booking"
-							class="btn btn-primary fw-bold fs-5">
+							class="bookbtn">
 					</form:form>
 				</div>
 	</div>

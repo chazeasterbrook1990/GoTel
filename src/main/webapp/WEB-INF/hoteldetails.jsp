@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,17 +11,18 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="/style.css" />
 <meta charset="UTF-8">
-<title><c:out
-		value="${details.get('hotel_name').toString().replace('\"', '')}"></c:out></title>
+<title>GoTel Home</title>
 </head>
-<body>
-	<div class="text-right">
-		<button type="button" name="back" onclick="history.back()" class="btn btn-primary fw-bold fs-5 mt-4 mx-2">Return to Search</button>
-		
+<body class = "page">
+	<div class="header">
+		<img style="width: 300px" src="../images/logogotel.png">
 	</div>
-	<div class="text-right">
-		<a href="/gotel/home" class="btn btn-primary fw-bold fs-5 mt-4 mx-2">Start a New Search</a>
-		
+	<div>
+		<ul class="main-nav">
+			<li><a href="/gotel/home">Home</a></li>
+			<li><button class="back-btn" onclick="history.back()">Back To Search</button></li>
+			<li><a href="/logout">Logout</a></li>
+		</ul>
 	</div>
 	<div class="d-flex flex-column container custom-container">
 	<h1>
@@ -69,15 +71,15 @@
 	<div class="">
 		<form:form
 			action="/gotel/create-booking/${details.get('hotel_name').toString().replace('\"', '').replace('/', '')}/${details.get('hotel_id').toString().replace('\"', '')}/${details.get('city').toString().replace('\"', '')}"
-			method="POST" modelAttribute="newBooking">
+			method="POST" modelAttribute="newBooking" class="book">
 			<form:errors path="checkInDate" class="errors"></form:errors>
-			<form:input path="checkInDate" type="text"
+			<form:input class = "checkin" path="checkInDate" type="text"
 				placeholder="Check-In (yyyy-MM-dd)" value="${arrival}"></form:input>
 			<form:errors path="checkOutDate" class="errors"></form:errors>
-			<form:input path="checkOutDate" type="text"
+			<form:input class = "checkout" path="checkOutDate" type="text"
 				placeholder="Check-Out (yyyy-MM-dd)" value="${departure}"></form:input>
 			<input type="submit" value="Create Booking"
-				class="btn btn-primary fw-bold fs-5">
+				class="bookbtn">
 		</form:form>
 	</div>
 	</div>
