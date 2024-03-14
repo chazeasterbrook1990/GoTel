@@ -15,7 +15,7 @@
 </head>
 <body class = "page">
 	<div class="header">
-		<img style="width: 300px" src="../images/logogotel.png">
+		<img style="width: 300px" src="<c:url value='/images/logogotel.png' />">
 	</div>
 	<div>
 		<ul class="main-nav">
@@ -28,10 +28,9 @@
 		<h1>
 			<c:out
 				value="${details.get('hotel_name').toString().replace('\"', '')}"></c:out>
-	</h1>
+		</h1>
 	<p>
-		<a
-			href="${details.get('url').toString().replace('\"', '')}">Link to Hotel Website</a>
+		<a href="${details.get('url').toString().replace('\"', '')}">Link to Hotel Website</a>
 				</p>
 				<p>
 					Address:

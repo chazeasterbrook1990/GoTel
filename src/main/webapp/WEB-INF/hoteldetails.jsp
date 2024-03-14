@@ -15,7 +15,7 @@
 </head>
 <body class = "page">
 	<div class="header">
-		<img style="width: 300px" src="../images/logogotel.png">
+		<img style="width: 300px" src="<c:url value='/images/logogotel.png' />">
 	</div>
 	<div>
 		<ul class="main-nav">
