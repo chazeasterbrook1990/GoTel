@@ -24,9 +24,12 @@
 		</ul>
 	</div>
 	<div>
-		<p class="intro-welcome">
+		<p class="intro-welcome text-center">
 			Welcome,
 			<c:out value="${userName}"></c:out>!
+		</p>
+		<p class="font-italic text-center">
+			Search a Destination
 		</p>
 	</div>
 	<div class="container1 custom-container text-center">
@@ -41,7 +44,7 @@
 			<button class="searchbtn" type="submit" class="btn btn-primary">Search</button>
 		</form:form>
 	</div>
-	<h2 class="intro-booking">Your Bookings</h2>
+	<h2 class="intro-booking text-center">Your Bookings</h2>
 	<div class = "bookings-table">
 		<table class="table table-striped table-bordered">
 			<thead class="thead-dark">
@@ -54,6 +57,7 @@
 					<th>Cancel</th>
 				</tr>
 			</thead>
+			<c:if test="${bookings.size()>0}">
 			<tbody>
 				<c:forEach var="bookings" items="${bookings}">
 					<tr>
@@ -73,7 +77,12 @@
 					</tr>
 				</c:forEach>
 			</tbody>
-		</table>
+			</table>
+			</c:if>
+			<c:if test="${bookings.size()==0}">
+			<p class="text-center font-italic">No bookings here yet</p>
+			</c:if>
+		
 	</div>
 </body>
 </html>
